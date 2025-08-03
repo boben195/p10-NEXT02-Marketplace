@@ -44,7 +44,7 @@ const navbarItems = [
 ]
 
 export const Navbar = () => {
-    const pathname = usePathname
+    const pathname = usePathname();
 
 
   return (
