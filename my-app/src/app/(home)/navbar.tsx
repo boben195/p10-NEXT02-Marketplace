@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Poppins } from "next/font/google"
+import { usePathname } from "next/navigation";
 
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
 
 
 const poppins = Poppins({
@@ -23,8 +25,11 @@ const NavbarItem = ({
     isActive,
 }: NavbarItemProps) => {
     return (
-        <Button>
-            {children}
+        <Button asChild variant="outline" className={cn("bg-transparent hover:bg-transparent rounded-full hover:border-primary border-transparent px-3.5 text-lgs",
+            isActive && "bg-black text-white hover:bg-black hover:text-white",
+        )}><Link href={href}>
+                {children}
+            </Link>
         </Button>
     )
 }
@@ -39,6 +44,9 @@ const navbarItems = [
 ]
 
 export const Navbar = () => {
+    const pathname = usePathname
+
+
   return (
       <nav className="h-20 flex border-b justify-between font-medium bg-white">
           <Link href="/" className="pl-6 flex items-center">
