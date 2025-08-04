@@ -24,7 +24,7 @@ export default function Home() {
         <Progress value={50}></Progress>
       </div>
       <div>
-        <Textarea value="Textarea"></Textarea>
+        <Textarea defaultValue="Textarea"></Textarea>
       </div>
   </div>)
 }
