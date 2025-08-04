@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import { NavbarSidebar } from "./navbar-sidebar";
+import { MenuIcon } from "lucide-react";
+
 
 
 
@@ -58,6 +60,7 @@ export const Navbar = () => {
               <span className={cn("text-5xl font-semibold", poppins.className)}>funroad
               </span>
           </Link>
+
           <NavbarSidebar
               open={isSidebarOpen}
               items={navbarItems}
@@ -79,6 +82,11 @@ export const Navbar = () => {
               </Button>
               <Button asChild className="border-l border-t-0 border-b-0 border-r-0 px-12 h-full rounded-none bg-black text-white hover:bg-pink-400 hover:text-black transition-colors text-lg">
                  <Link href="/sign-up"> Start Selling</Link>
+              </Button>
+          </div>
+          <div className="flex lg:hidden items-center justify-center">
+              <Button variant="ghost" className="size-12 border-transparent bg-white" onClick={() => setIsSidebarOpen(true)}>
+                  <MenuIcon/>
               </Button>
           </div>
     </nav>

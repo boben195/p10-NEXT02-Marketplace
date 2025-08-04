@@ -1,5 +1,8 @@
+import Link from "next/link"
+
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
+;
 
 
 
@@ -27,6 +30,17 @@ export const NavbarSidebar = ({ items, open, onOpenChange }: Props) => {
                         </SheetTitle>
                     </div>
                 </SheetHeader>
+                <ScrollArea className="flex flex-col overflow-y-auto h-full pb-2">
+                    {items.map((item) => {
+                        return (
+                        <Link key={item.href} href={item.href}
+                        className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium">
+                            {item.children}
+                            </Link>
+                        )
+                    })}
+
+                </ScrollArea>
             </SheetContent>
         </Sheet>
     )
