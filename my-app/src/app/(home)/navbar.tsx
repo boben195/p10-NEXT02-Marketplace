@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { Poppins } from "next/font/google"
 import { usePathname } from "next/navigation";
-
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
+import { NavbarSidebar } from "./navbar-sidebar";
+
 
 
 
@@ -46,6 +49,7 @@ const navbarItems = [
 
 export const Navbar = () => {
     const pathname = usePathname();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 
   return (
@@ -54,6 +58,13 @@ export const Navbar = () => {
               <span className={cn("text-5xl font-semibold", poppins.className)}>funroad
               </span>
           </Link>
+          <NavbarSidebar
+              open={isSidebarOpen}
+              items={navbarItems}
+              onOpenChange={setIsSidebarOpen}
+          />
+
+
           <div className="items-center gap-4 hidden lg:flex">
               {navbarItems.map((item) => (
                   <NavbarItem key={item.href}
