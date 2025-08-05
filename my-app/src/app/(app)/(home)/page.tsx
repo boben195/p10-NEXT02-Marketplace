@@ -10,7 +10,16 @@ export default async function Home() {
 
   const data = await payload.find({
     collection: "categories",
+    depth: 1,  //Populate subcategory
+    where: {
+      parent: {
+        exists: false,  // In first load parent in second subcategory!!!
+      }
+    }
   })
+console.log(data);
+
+
   return (
     <div>
       {JSON.stringify(data, null, 2)}
