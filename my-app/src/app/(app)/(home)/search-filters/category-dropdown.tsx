@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {Category} from "@payload-types"
+import { useDropdownPosition } from "./use-dropdown-position";
 
 
 interface Props {
@@ -17,6 +18,7 @@ interface Props {
 export const CategoryDropdown = ({ category, isActive, isNavigationHovered }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const { getDropdownPosition} = useDropdownPosition(dropdownRef);
 
     const onMouseEnter = () => {
         if (category.subcategories) {
