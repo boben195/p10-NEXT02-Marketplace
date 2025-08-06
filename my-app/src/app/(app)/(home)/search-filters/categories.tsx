@@ -8,7 +8,8 @@ interface CategoriesProps {
 
 export const Categories = ({ data }: Props) => {
     return (
-        <div>
+        <div className="relative w-full">
+            <div className="flex flex-nowrap items-center">
             {data.map((category: Category) => (
                 <div key={category.id}>
                     <CategoryDropdown
@@ -16,7 +17,8 @@ export const Categories = ({ data }: Props) => {
                         isActive={false}
                         isNavigationHovered={ false} />
                 </div>
-            )) }
+            ))}
+            </div>
         </div>
     )
 
