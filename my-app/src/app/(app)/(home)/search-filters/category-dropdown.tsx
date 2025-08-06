@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {Category} from "@payload-types"
 import { useDropdownPosition } from "./use-dropdown-position";
+import { SubcategoryMenu } from "./subcategory-menu";
 
 
 interface Props {
@@ -27,6 +28,8 @@ export const CategoryDropdown = ({ category, isActive, isNavigationHovered }: Pr
     }
 
     const onMouseLeave = () => setIsOpen(false);
+
+    const dropdownPosition = getDropdownPosition();
 
     return (
         <div className="relative"
@@ -53,6 +56,11 @@ export const CategoryDropdown = ({ category, isActive, isNavigationHovered }: Pr
                     
                 )}
             </div>
+            <SubcategoryMenu
+                category={category}
+                isOpen={isOpen}
+                position={dropdownPosition}
+            />
         </div>
     )
 }
