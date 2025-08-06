@@ -1,3 +1,6 @@
+import {Category} from "@payload-types"
+import { CategoryDropdown } from "./category-dropdown";
+
 interface CategoriesProps {
     data: any;
 };
@@ -6,7 +9,14 @@ interface CategoriesProps {
 export const Categories = ({ data }: Props) => {
     return (
         <div>
-            Categories
+            {data.map((category: Category) => (
+                <div key={category.id}>
+                    <CategoryDropdown
+                        category={category}
+                        isActive={false}
+                        isNavigationHovered={ false} />
+                </div>
+            )) }
         </div>
     )
 
