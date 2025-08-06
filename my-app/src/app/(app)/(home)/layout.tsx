@@ -1,5 +1,6 @@
 import configPromise from "@payload-config"
 import { getPayload } from "payload"
+import {Category} from "@payload-types"
 
 import { Footer } from "./footer";
 import { Navbar } from "./navbar";
@@ -18,12 +19,27 @@ const Layout = async ({ children }: Props) => {
     const data = await payload.find({
         collection: "categories",
         depth: 1,  //Populate subcategory
+        pagination: false,
         where: {
             parent: {
                 exists: false,  // In first load parent in second subcategory!!!
             },
         },
     });
+
+    const formattedData = data.docs.map((doc) => ({
+        ...doc,
+        subcategories: (doc.subcategories?.docs ?? []).map((doc) => ({
+            //Becouse og depth: 1 we  are confident "doc" will be type of "Category"
+            ...(doc as Category),
+        }))
+    }))
+
+
+    console.log({data, formattedData});
+    
+
+
     
 
 
